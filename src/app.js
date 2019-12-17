@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mounted() {
       this.getRates()
     },
+    computed: {
+      convertFromEuros: function(){
+        return (this.inputAmount * this.conversionFactor)
+      }
+    },
     methods: {
       getRates: function(){
         const request = fetch("https://api.exchangeratesapi.io/latest")
