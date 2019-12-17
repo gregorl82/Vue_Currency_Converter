@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     computed: {
       convertFromEuros: function(){
-        return (this.inputAmount * this.conversionFactor)
+        return (this.inputAmount * this.conversionFactor);
       }
     },
     methods: {
@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((data) => {
           this.rates = data.rates
         })
+      }
+    },
+    filters: {
+      formatOutput: function(value){
+        return value.toFixed(2);
       }
     }
   })
