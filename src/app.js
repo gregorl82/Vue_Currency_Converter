@@ -4,21 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: "#app",
     data: {
-      inputInEuroAmount: null,
       rates: {},
-      conversionFactor1: null,
-      conversionFactor2: null,
-      inputInOtherCurrency: null
+      inputInEuroAmount: null,
+      inputInOtherCurrency: null,
+      inputForNonBase: null,
+      conversionFactorFromEuros: null,
+      conversionFactorToEuros: null,
+      conversionFactorFromNonBase: null,
+      conversionFactorToNonBase: null
     },
     mounted() {
       this.getRates()
     },
     computed: {
       convertFromEuros: function(){
-        return (this.inputInEuroAmount * this.conversionFactor1);
+        return (this.inputInEuroAmount * this.conversionFactorFromEuros);
       },
       convertToEuros: function(){
-        return (this.inputInOtherCurrency / this.conversionFactor2);
+        return (this.inputInOtherCurrency / this.conversionFactorToEuros);
+      },
+      convertNonBase: function(){
+        return (this.inputForNonBase / this.conversionFactorFromNonBase * this.conversionFactorToNonBase)
       }
     },
     methods: {

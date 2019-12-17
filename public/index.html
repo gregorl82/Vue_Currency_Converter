@@ -17,7 +17,7 @@
       <input v-model.number="inputInEuroAmount" type="number" name="amount-to-convert" step="0.01">
 
       <label for="currency-select">Select a currency:</label>
-      <select v-model.number="conversionFactor1">
+      <select v-model.number="conversionFactorFromEuros">
         <option v-for="(rate, code) in rates" :value="rate">{{code}}</option>
       </select>
 
@@ -27,10 +27,12 @@
       <h3>Result: {{convertFromEuros | formatOutput}}</h3>
     </div>
 
+    <hr/>
+
     <h3>XXX => EUR</h3>
     <form>
       <label for="currency-select">Select a currency:</label>
-      <select v-model.number="conversionFactor2">
+      <select v-model.number="conversionFactorToEuros">
         <option v-for="(rate, code) in rates" :value="rate">{{code}}</option>
       </select>
 
@@ -40,6 +42,29 @@
 
     <div v-if="inputInOtherCurrency">
       <h3>Result: {{convertToEuros | formatOutput}}</h3>
+    </div>
+
+    <hr/>
+
+    <h3>XXX => XXX</h3>
+    <form>
+      <label for="base-currency-select">Select a base currency:</label>
+      <select v-model.number="conversionFactorFromNonBase">
+        <option v-for="(rate, code) in rates" :value="rate">{{code}}</option>
+      </select>
+
+      <label for="target-currency-select">Select a target currency:</label>
+      <select v-model.number="conversionFactorToNonBase">
+        <option v-for="(rate, code) in rates" :value="rate">{{code}}</option>
+      </select>
+
+      <label for="non-base-convert">Enter an amount to convert:</label>
+      <input v-model.number="inputForNonBase" type="number" name="non-base-convert" step="0.01">
+
+    </form>
+
+    <div v-if="inputForNonBase">
+      <h3>Result: {{convertNonBase | formatOutput}}</h3>
     </div>
 
   </div>
