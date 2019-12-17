@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: "#app",
     data: {
+      inputAmount: null,
       rates: {},
+      conversionFactor: null
     },
     mounted() {
       this.getRates()

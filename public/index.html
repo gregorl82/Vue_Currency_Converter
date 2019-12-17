@@ -10,6 +10,18 @@
 <body>
 
   <div id="app">
+    <h1>Currency Converter</h1>
+    <h3>EUR => XXX</h3>
+    <form>
+      <label for="amount-to-convert">Enter an amount to convert:</label>
+      <input v-model.number="inputAmount" type="number" name="amount-to-convert" step="0.01">
+
+      <label for="new-currency">Select a currency:</label>
+      <select v-model.number="conversionFactor">
+        <option v-for="(rate, code) in rates" :value="rate">{{code}}</option>
+      </select>
+
+    </form>
 
   </div>
 
